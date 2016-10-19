@@ -1,0 +1,86 @@
+@colorPlayer1: red;
+@colorPlayer2: yellow;
+@colorBackground: #2A499A;
+@colorBorder: #222;
+@colorDisabled: #777;
+
+.clearfix {
+  content: ".";
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0px;
+}
+
+.connect4 {
+  width: 600px;
+
+  button {
+    width: 20%;
+    margin: 10px 40% -30px;
+    font-size: 20px;
+  }
+
+  .players {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+
+    .player {
+      padding: 10px;
+      border: solid 3px @colorBorder;
+      border-radius: 5%;
+      background-color: @colorBackground;
+
+      &.player1 {
+        float: left;
+        color: @colorPlayer1;
+      }
+
+      &.player2 {
+        float: right;
+        color: @colorPlayer2;
+      }
+
+      &:not(.active) {
+        color: @colorDisabled;
+      }
+    }
+
+    &:after {
+      .clearfix;
+    }
+  }
+
+  .connect4-grid {
+    width: 100%;
+    height: 480px;
+    border: solid 10px @colorBorder;
+    border-top: solid 10px @colorBackground;
+    background-color: @colorBackground;
+
+    &[data-current-player="1"] td:hover {
+      background-color: @colorPlayer1;
+    }
+
+    &[data-current-player="2"] td:hover {
+      background-color: @colorPlayer2;
+    }
+
+    td {
+      padding: 15px;
+      border: 10px solid @colorBorder;
+      border-radius: 50%;
+      background-color: #FFF;
+
+      &[data-player="1"] {
+        background-color: @colorPlayer1 !important;
+      }
+
+      &[data-player="2"] {
+        background-color: @colorPlayer2 !important;
+      }
+    }
+  }
+}
